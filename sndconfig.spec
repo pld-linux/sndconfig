@@ -2,7 +2,7 @@ Summary:	The Red Hat Linux sound configuration tool
 Summary(pl):	Narzêdzie do konfiguracji d¼wiêku
 Name:		sndconfig
 Version:	0.33
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Sound
 Group(de):	Applikationen/Laut
@@ -42,6 +42,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man8,%{_datadir}/locale}
 
 %{__make} prefix=$RPM_BUILD_ROOT%{_prefix} install
+cp $RPM_BUILD_ROOT/usr/man/man8/* $RPM_BUILD_ROOT/usr/share/man/man8/
 
 %find_lang %{name}
 
