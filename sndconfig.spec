@@ -24,13 +24,13 @@ Install sndconfig if you need to configure your sound card.
 %setup -n sndconfig
 
 %build
-make RPM_OPT_FLAGS="$RPM_OPT_FLAGS"
+%{__make} RPM_OPT_FLAGS="$RPM_OPT_FLAGS"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT/usr/{sbin,man/man8}
 mkdir -p $RPM_BUILD_ROOT/usr/share/locale
-make prefix=$RPM_BUILD_ROOT/usr install
+%{__make} prefix=$RPM_BUILD_ROOT/usr install
 
 %clean
 rm -rf $RPM_BUILD_ROOT
