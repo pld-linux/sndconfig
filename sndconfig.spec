@@ -8,7 +8,7 @@ Source: sndconfig-%{PACKAGE_VERSION}.tar.gz
 %ifarch i386 alpha
 Requires: isapnptools >= 1.16, sox, awesfx, playmidi, kernel >= 2.2.0
 %endif
-BuildRoot: /tmp/rhsound
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 ExclusiveArch: i386 sparc alpha
 
 %description
