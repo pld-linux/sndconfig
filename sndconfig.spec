@@ -12,6 +12,7 @@ Group(pt_BR):	Aplicações/Som
 Source0:	%{name}-%{PACKAGE_VERSION}.tar.gz
 Patch0:		%{name}-PLD_and_rename_conf.modules.patch.bz2
 Patch1:		%{name}-isapnp.patch
+Patch2:		%{name}-awe_wave.patch
 %ifarch %{ix86} alpha
 Requires:	isapnptools >= 1.16, sox, awesfx, playmidi
 Conflicts:	kernel < 2.2.0
@@ -39,6 +40,7 @@ Red Hata (lub kompatybilnym).
 %setup -q -n %{name}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__make} RPM_OPT_FLAGS="%{rpmcflags}"
