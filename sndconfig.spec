@@ -10,8 +10,10 @@ Source0:	%{name}-%{version}.tar.gz
 Patch0:		%{name}-PLD_and_rename_conf.modules.patch.bz2
 Patch1:		%{name}-isapnp.patch
 Patch2:		%{name}-awe_wave.patch
+Patch3:		%{name}-gcc.patch
 BuildRequires:	newt-devel
 BuildRequires:	slang-devel
+buildRequires:	sharutils
 %ifarch %{ix86} alpha
 Requires:	awesfx
 Requires:	isapnptools >= 1.16
@@ -41,6 +43,7 @@ Red Hata (lub kompatybilnym).
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %{__make} RPM_OPT_FLAGS="%{rpmcflags}"
