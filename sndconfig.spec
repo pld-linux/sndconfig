@@ -2,12 +2,13 @@ Summary:	The Red Hat Linux sound configuration tool
 Summary(pl):	Narzêdzie do konfiguracji d¼wiêku
 Name:		sndconfig
 Version:	0.33
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/Sound
 Group(de):	Applikationen/Laut
 Group(pl):	Aplikacje/D¼wiêk
 Source0:	%{name}-%{PACKAGE_VERSION}.tar.gz
+Patch0:		sndconfig-PLD_and_rename_conf.modules.patch.bz2
 %ifarch %{ix86} alpha
 Requires:	isapnptools >= 1.16, sox, awesfx, playmidi
 Conflicts:	kernel < 2.2.0
@@ -33,6 +34,7 @@ Red Hata (lub kompatybilnym).
 
 %prep
 %setup -q -n %{name}
+%patch0 -p1
 
 %build
 %{__make} RPM_OPT_FLAGS="%{rpmcflags}"
