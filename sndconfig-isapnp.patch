@@ -1,0 +1,377 @@
+diff -urN sndconfig.orig/pnpconf.c sndconfig/pnpconf.c
+--- sndconfig.orig/pnpconf.c	Thu Mar 11 06:54:33 1999
++++ sndconfig/pnpconf.c	Mon Feb  4 09:16:36 2002
+@@ -833,17 +833,17 @@
+ 	}
+     }
+ 
+-    if (!madebackup && !access("/etc/isapnp.conf", F_OK)) {
++    if (!madebackup && !access("/etc/isapnp/isapnp.conf", F_OK)) {
+ 	newtWinMessage(_("File Exists"), _("Ok"),
+-		       _("There is already a file called /etc/isapnp.conf."
++		       _("There is already a file called /etc/isapnp/isapnp.conf."
+ 		       " The existing file will be renamed "
+-		       "/etc/isapnp.conf.bak and a new file will be "
++		       "/etc/isapnp/isapnp.conf.bak and a new file will be "
+ 		       "written."));
+-	rename("/etc/isapnp.conf", "/etc/isapnp.conf.bak");
++	rename("/etc/isapnp/isapnp.conf", "/etc/isapnp/isapnp.conf.bak");
+ 	madebackup=1;
+     } 
+ 
+-    if ((f=fopen("/etc/isapnp.conf", "w"))==NULL) {
++    if ((f=fopen("/etc/isapnp/isapnp.conf", "w"))==NULL) {
+ 	for (i=0; i<nlines; i++)
+ 	  free(lines[i]);
+ 	free(buf);
+@@ -856,7 +856,7 @@
+ 	
+ 	done=0;
+ 	/* merge changes */
+-	if ((g = fopen("/etc/isapnp.conf.bak","r"))!= NULL) {
++	if ((g = fopen("/etc/isapnp/isapnp.conf.bak","r"))!= NULL) {
+ 	    for (i=0;i<=preamble;i++) {
+ 		fputs(lines[i],f);
+ 		fputs("\n",f);
+diff -urN sndconfig.orig/po/cs.po sndconfig/po/cs.po
+--- sndconfig.orig/po/cs.po	Mon Apr 19 19:23:12 1999
++++ sndconfig/po/cs.po	Mon Feb  4 09:17:50 2002
+@@ -595,11 +595,11 @@
+ 
+ #: ../pnpconf.c:838
+ msgid ""
+-"There is already a file called /etc/isapnp.conf. The existing file will be "
+-"renamed /etc/isapnp.conf.bak and a new file will be written."
++"There is already a file called /etc/isapnp/isapnp.conf. The existing file will be "
++"renamed /etc/isapnp/isapnp.conf.bak and a new file will be written."
+ msgstr ""
+-"Soubor s názvem /etc/isapnp.conf ji¾ existuje. Název existujícího souboru se "
+-"zmìní na /etc/isapnp.conf.bak a pak se zapí¹e soubor nový."
++"Soubor s názvem /etc/isapnp/isapnp.conf ji¾ existuje. Název existujícího souboru se "
++"zmìní na /etc/isapnp/isapnp.conf.bak a pak se zapí¹e soubor nový."
+ 
+ #: ../pnpconf.c:939
+ msgid "No cards found, or error probing for pnp cards\n"
+diff -urN sndconfig.orig/po/da.po sndconfig/po/da.po
+--- sndconfig.orig/po/da.po	Mon Apr 19 19:23:44 1999
++++ sndconfig/po/da.po	Mon Feb  4 09:17:54 2002
+@@ -597,11 +597,11 @@
+ 
+ #: ../pnpconf.c:838
+ msgid ""
+-"There is already a file called /etc/isapnp.conf. The existing file will be "
+-"renamed /etc/isapnp.conf.bak and a new file will be written."
++"There is already a file called /etc/isapnp/isapnp.conf. The existing file will be "
++"renamed /etc/isapnp/isapnp.conf.bak and a new file will be written."
+ msgstr ""
+-"Der findes allerede en fil kaldet /etc/isapnp.conf. Den eksisterende fil vil "
+-"blive omdøbt til /etc/isapnp.conf.bak, og en ny fil vil blive skrevet."
++"Der findes allerede en fil kaldet /etc/isapnp/isapnp.conf. Den eksisterende fil vil "
++"blive omdøbt til /etc/isapnp/isapnp.conf.bak, og en ny fil vil blive skrevet."
+ 
+ #: ../pnpconf.c:939
+ msgid "No cards found, or error probing for pnp cards\n"
+diff -urN sndconfig.orig/po/de.po sndconfig/po/de.po
+--- sndconfig.orig/po/de.po	Mon Apr 19 20:18:10 1999
++++ sndconfig/po/de.po	Mon Feb  4 09:17:59 2002
+@@ -593,11 +593,11 @@
+ 
+ #: ../pnpconf.c:838
+ msgid ""
+-"There is already a file called /etc/isapnp.conf. The existing file will be "
+-"renamed /etc/isapnp.conf.bak and a new file will be written."
++"There is already a file called /etc/isapnp/isapnp.conf. The existing file will be "
++"renamed /etc/isapnp/isapnp.conf.bak and a new file will be written."
+ msgstr ""
+-"Eine Datei namens /etc/isapnp.conf ist bereits vorhanden. Die vorhandene Datei wird "
+-"in /etc/isapnp.conf.bak umbenannt, und eine neue Datei wird erstellt."
++"Eine Datei namens /etc/isapnp/isapnp.conf ist bereits vorhanden. Die vorhandene Datei wird "
++"in /etc/isapnp/isapnp.conf.bak umbenannt, und eine neue Datei wird erstellt."
+ 
+ #: ../pnpconf.c:939
+ msgid "No cards found, or error probing for pnp cards\n"
+diff -urN sndconfig.orig/po/et.po sndconfig/po/et.po
+--- sndconfig.orig/po/et.po	Mon Apr 19 20:22:12 1999
++++ sndconfig/po/et.po	Mon Feb  4 09:18:03 2002
+@@ -590,11 +590,11 @@
+ 
+ #: ../pnpconf.c:838
+ msgid ""
+-"There is already a file called /etc/isapnp.conf. The existing file will be "
+-"renamed /etc/isapnp.conf.bak and a new file will be written."
++"There is already a file called /etc/isapnp/isapnp.conf. The existing file will be "
++"renamed /etc/isapnp/isapnp.conf.bak and a new file will be written."
+ msgstr ""
+-"/etc/isapnp.conf fail on juba olemas, nimetame selle ümber failiks "
+-"/etc/isapnp.conf.bak ja kirjutame uue asemele."
++"/etc/isapnp/isapnp.conf fail on juba olemas, nimetame selle ümber failiks "
++"/etc/isapnp/isapnp.conf.bak ja kirjutame uue asemele."
+ 
+ #: ../pnpconf.c:939
+ msgid "No cards found, or error probing for pnp cards\n"
+diff -urN sndconfig.orig/po/fr.po sndconfig/po/fr.po
+--- sndconfig.orig/po/fr.po	Mon Apr 19 20:23:26 1999
++++ sndconfig/po/fr.po	Mon Feb  4 09:18:06 2002
+@@ -712,11 +712,11 @@
+ # ../pnpconf.c:613
+ #: ../pnpconf.c:838
+ msgid ""
+-"There is already a file called /etc/isapnp.conf. The existing file will be "
+-"renamed /etc/isapnp.conf.bak and a new file will be written."
++"There is already a file called /etc/isapnp/isapnp.conf. The existing file will be "
++"renamed /etc/isapnp/isapnp.conf.bak and a new file will be written."
+ msgstr ""
+-"Il y a déjà un fichier nommé /etc/isapnp.conf. Le fichier existant sera "
+-"renommé /etc/isapnp.conf.bak et un nouveau fichier sera créé."
++"Il y a déjà un fichier nommé /etc/isapnp/isapnp.conf. Le fichier existant sera "
++"renommé /etc/isapnp/isapnp.conf.bak et un nouveau fichier sera créé."
+ 
+ # ../pnpconf.c:714
+ #: ../pnpconf.c:939
+diff -urN sndconfig.orig/po/hu.po sndconfig/po/hu.po
+--- sndconfig.orig/po/hu.po	Mon Apr 19 20:24:11 1999
++++ sndconfig/po/hu.po	Mon Feb  4 09:18:09 2002
+@@ -594,11 +594,11 @@
+ 
+ #: ../pnpconf.c:838
+ msgid ""
+-"There is already a file called /etc/isapnp.conf. The existing file will be "
+-"renamed /etc/isapnp.conf.bak and a new file will be written."
++"There is already a file called /etc/isapnp/isapnp.conf. The existing file will be "
++"renamed /etc/isapnp/isapnp.conf.bak and a new file will be written."
+ msgstr ""
+-"Már van egy /etc/isapnp.conf nevû file. A létezõ file át lesz nevezve "
+-"/etc/isapnp.conf.bak névre, és új file lesz létrehozva."
++"Már van egy /etc/isapnp/isapnp.conf nevû file. A létezõ file át lesz nevezve "
++"/etc/isapnp/isapnp.conf.bak névre, és új file lesz létrehozva."
+ 
+ #: ../pnpconf.c:939
+ msgid "No cards found, or error probing for pnp cards\n"
+diff -urN sndconfig.orig/po/in.po sndconfig/po/in.po
+--- sndconfig.orig/po/in.po	Mon Apr 19 20:24:45 1999
++++ sndconfig/po/in.po	Mon Feb  4 09:18:14 2002
+@@ -591,11 +591,11 @@
+ 
+ #: ../pnpconf.c:838
+ msgid ""
+-"There is already a file called /etc/isapnp.conf. The existing file will be "
+-"renamed /etc/isapnp.conf.bak and a new file will be written."
++"There is already a file called /etc/isapnp/isapnp.conf. The existing file will be "
++"renamed /etc/isapnp/isapnp.conf.bak and a new file will be written."
+ msgstr ""
+-"Sudah ada file bernama /etc/isapnp.conf. File ini akan diganti namanya "
+-"menjadi /etc/isapnp.conf.bak dan akan dibuatkan file baru."
++"Sudah ada file bernama /etc/isapnp/isapnp.conf. File ini akan diganti namanya "
++"menjadi /etc/isapnp/isapnp.conf.bak dan akan dibuatkan file baru."
+ 
+ #: ../pnpconf.c:939
+ msgid "No cards found, or error probing for pnp cards\n"
+diff -urN sndconfig.orig/po/is.po sndconfig/po/is.po
+--- sndconfig.orig/po/is.po	Mon Apr 19 20:25:07 1999
++++ sndconfig/po/is.po	Mon Feb  4 09:18:18 2002
+@@ -588,11 +588,11 @@
+ 
+ #: ../pnpconf.c:838
+ msgid ""
+-"There is already a file called /etc/isapnp.conf. The existing file will be "
+-"renamed /etc/isapnp.conf.bak and a new file will be written."
++"There is already a file called /etc/isapnp/isapnp.conf. The existing file will be "
++"renamed /etc/isapnp/isapnp.conf.bak and a new file will be written."
+ msgstr ""
+-"Það er þegar til skrá sem heitir /etc/isapnp.conf. Sú skrá verður endurnefnd "
+-"í /etc/isapnp.conf.bak og ný búin til."
++"Það er þegar til skrá sem heitir /etc/isapnp/isapnp.conf. Sú skrá verður endurnefnd "
++"í /etc/isapnp/isapnp.conf.bak og ný búin til."
+ 
+ #: ../pnpconf.c:939
+ msgid "No cards found, or error probing for pnp cards\n"
+diff -urN sndconfig.orig/po/it.po sndconfig/po/it.po
+--- sndconfig.orig/po/it.po	Mon Apr 19 20:25:38 1999
++++ sndconfig/po/it.po	Mon Feb  4 09:18:21 2002
+@@ -580,11 +580,11 @@
+ 
+ #: ../pnpconf.c:838
+ msgid ""
+-"There is already a file called /etc/isapnp.conf. The existing file will be "
+-"renamed /etc/isapnp.conf.bak and a new file will be written."
++"There is already a file called /etc/isapnp/isapnp.conf. The existing file will be "
++"renamed /etc/isapnp/isapnp.conf.bak and a new file will be written."
+ msgstr ""
+-"C'e' gia' un file chiamato /etc/isapnp.conf. Il file esistente verra' "
+-"rinominato /etc/isapnp.conf.bak ed un nuovo file verra' scritto."
++"C'e' gia' un file chiamato /etc/isapnp/isapnp.conf. Il file esistente verra' "
++"rinominato /etc/isapnp/isapnp.conf.bak ed un nuovo file verra' scritto."
+ 
+ #: ../pnpconf.c:939
+ msgid "No cards found, or error probing for pnp cards\n"
+diff -urN sndconfig.orig/po/no.po sndconfig/po/no.po
+--- sndconfig.orig/po/no.po	Mon Apr 19 20:26:03 1999
++++ sndconfig/po/no.po	Mon Feb  4 09:18:24 2002
+@@ -591,11 +591,11 @@
+ 
+ #: ../pnpconf.c:838
+ msgid ""
+-"There is already a file called /etc/isapnp.conf. The existing file will be "
+-"renamed /etc/isapnp.conf.bak and a new file will be written."
++"There is already a file called /etc/isapnp/isapnp.conf. The existing file will be "
++"renamed /etc/isapnp/isapnp.conf.bak and a new file will be written."
+ msgstr ""
+-"Det finnes allerede en fil /etc/isapnp.conf. Den eksisterende filen vil bli "
+-"flyttet til /etc/isapnp.conf.bak og en ny fil vil bli opprettet."
++"Det finnes allerede en fil /etc/isapnp/isapnp.conf. Den eksisterende filen vil bli "
++"flyttet til /etc/isapnp/isapnp.conf.bak og en ny fil vil bli opprettet."
+ 
+ #: ../pnpconf.c:939
+ msgid "No cards found, or error probing for pnp cards\n"
+diff -urN sndconfig.orig/po/pt_BR.po sndconfig/po/pt_BR.po
+--- sndconfig.orig/po/pt_BR.po	Mon Apr 19 20:26:26 1999
++++ sndconfig/po/pt_BR.po	Mon Feb  4 09:17:24 2002
+@@ -596,11 +596,11 @@
+ 
+ #: ../pnpconf.c:838
+ msgid ""
+-"There is already a file called /etc/isapnp.conf. The existing file will be "
+-"renamed /etc/isapnp.conf.bak and a new file will be written."
++"There is already a file called /etc/isapnp/isapnp.conf. The existing file will be "
++"renamed /etc/isapnp/isapnp.conf.bak and a new file will be written."
+ msgstr ""
+-"Já existe um arquivo /etc/isapnp.conf. O arquivo existente será renomeado "
+-"para /etc/isapnp.conf.bak e um novo arquivo será criado."
++"Já existe um arquivo /etc/isapnp/isapnp.conf. O arquivo existente será renomeado "
++"para /etc/isapnp/isapnp.conf.bak e um novo arquivo será criado."
+ 
+ #: ../pnpconf.c:939
+ msgid "No cards found, or error probing for pnp cards\n"
+diff -urN sndconfig.orig/po/ro.po sndconfig/po/ro.po
+--- sndconfig.orig/po/ro.po	Mon Apr 19 20:26:53 1999
++++ sndconfig/po/ro.po	Mon Feb  4 09:18:32 2002
+@@ -587,11 +587,11 @@
+ 
+ #: ../pnpconf.c:838
+ msgid ""
+-"There is already a file called /etc/isapnp.conf. The existing file will be "
+-"renamed /etc/isapnp.conf.bak and a new file will be written."
++"There is already a file called /etc/isapnp/isapnp.conf. The existing file will be "
++"renamed /etc/isapnp/isapnp.conf.bak and a new file will be written."
+ msgstr ""
+-"Fiºierul /etc/isapnp.conf existã deja în acest sistem. Acest fiºier va fi "
+-"redenumit /etc/isapnp.conf.bak ºi un nou fiºier va fi creat în loc."
++"Fiºierul /etc/isapnp/isapnp.conf existã deja în acest sistem. Acest fiºier va fi "
++"redenumit /etc/isapnp/isapnp.conf.bak ºi un nou fiºier va fi creat în loc."
+ 
+ #: ../pnpconf.c:939
+ msgid "No cards found, or error probing for pnp cards\n"
+diff -urN sndconfig.orig/po/ru.po sndconfig/po/ru.po
+--- sndconfig.orig/po/ru.po	Mon Apr 19 20:27:23 1999
++++ sndconfig/po/ru.po	Mon Feb  4 09:18:35 2002
+@@ -594,11 +594,11 @@
+ 
+ #: ../pnpconf.c:838
+ msgid ""
+-"There is already a file called /etc/isapnp.conf. The existing file will be "
+-"renamed /etc/isapnp.conf.bak and a new file will be written."
++"There is already a file called /etc/isapnp/isapnp.conf. The existing file will be "
++"renamed /etc/isapnp/isapnp.conf.bak and a new file will be written."
+ msgstr ""
+-"æÁÊÌ /etc/isapnp.conf ÕÖÅ ÓÕÝÅÓÔ×ÕÅÔ. óÕÝÅÓÔ×ÕÀÝÉÊ ÆÁÊÌ ÂÕÄÅÔ ÐÅÒÅÉÍÅÎÏ×ÁÎ × "
+-"/etc/isapnp.conf.bak É ÎÏ×ÙÊ ÆÁÊÌ ÂÕÄÅÔ ÓÏÚÄÁÎ."
++"æÁÊÌ /etc/isapnp/isapnp.conf ÕÖÅ ÓÕÝÅÓÔ×ÕÅÔ. óÕÝÅÓÔ×ÕÀÝÉÊ ÆÁÊÌ ÂÕÄÅÔ ÐÅÒÅÉÍÅÎÏ×ÁÎ × "
++"/etc/isapnp/isapnp.conf.bak É ÎÏ×ÙÊ ÆÁÊÌ ÂÕÄÅÔ ÓÏÚÄÁÎ."
+ 
+ #: ../pnpconf.c:939
+ msgid "No cards found, or error probing for pnp cards\n"
+diff -urN sndconfig.orig/po/sk.po sndconfig/po/sk.po
+--- sndconfig.orig/po/sk.po	Mon Apr 19 20:27:55 1999
++++ sndconfig/po/sk.po	Mon Feb  4 09:18:39 2002
+@@ -590,11 +590,11 @@
+ 
+ #: ../pnpconf.c:838
+ msgid ""
+-"There is already a file called /etc/isapnp.conf. The existing file will be "
+-"renamed /etc/isapnp.conf.bak and a new file will be written."
++"There is already a file called /etc/isapnp/isapnp.conf. The existing file will be "
++"renamed /etc/isapnp/isapnp.conf.bak and a new file will be written."
+ msgstr ""
+-"U¾ existuje súbor s názvom /etc/isapnp.conf. Tento súbor bude premenovaný na "
+-"/etc/isapnp.conf.bak a bude vytvorený nový súbor."
++"U¾ existuje súbor s názvom /etc/isapnp/isapnp.conf. Tento súbor bude premenovaný na "
++"/etc/isapnp/isapnp.conf.bak a bude vytvorený nový súbor."
+ 
+ #: ../pnpconf.c:939
+ msgid "No cards found, or error probing for pnp cards\n"
+diff -urN sndconfig.orig/po/sndconfig.pot sndconfig/po/sndconfig.pot
+--- sndconfig.orig/po/sndconfig.pot	Mon Apr 19 19:15:36 1999
++++ sndconfig/po/sndconfig.pot	Mon Feb  4 09:18:43 2002
+@@ -554,8 +554,8 @@
+ 
+ #: ../pnpconf.c:838
+ msgid ""
+-"There is already a file called /etc/isapnp.conf. The existing file will be "
+-"renamed /etc/isapnp.conf.bak and a new file will be written."
++"There is already a file called /etc/isapnp/isapnp.conf. The existing file will be "
++"renamed /etc/isapnp/isapnp.conf.bak and a new file will be written."
+ msgstr ""
+ 
+ #: ../pnpconf.c:939
+diff -urN sndconfig.orig/po/tr.po sndconfig/po/tr.po
+--- sndconfig.orig/po/tr.po	Mon Apr 19 20:28:21 1999
++++ sndconfig/po/tr.po	Mon Feb  4 09:18:47 2002
+@@ -593,11 +593,11 @@
+ 
+ #: ../pnpconf.c:838
+ msgid ""
+-"There is already a file called /etc/isapnp.conf. The existing file will be "
+-"renamed /etc/isapnp.conf.bak and a new file will be written."
++"There is already a file called /etc/isapnp/isapnp.conf. The existing file will be "
++"renamed /etc/isapnp/isapnp.conf.bak and a new file will be written."
+ msgstr ""
+-"/etc/isapnp.conf adýnda bir dosya zaten var. Mevcut dosya "
+-"/etc/isapnp.conf.bak adýyla yedeklenecek ve yeni bir dosya yaratýlacak."
++"/etc/isapnp/isapnp.conf adýnda bir dosya zaten var. Mevcut dosya "
++"/etc/isapnp/isapnp.conf.bak adýyla yedeklenecek ve yeni bir dosya yaratýlacak."
+ 
+ #: ../pnpconf.c:939
+ msgid "No cards found, or error probing for pnp cards\n"
+diff -urN sndconfig.orig/po/uk_UA.po sndconfig/po/uk_UA.po
+--- sndconfig.orig/po/uk_UA.po	Mon Apr 19 20:28:47 1999
++++ sndconfig/po/uk_UA.po	Mon Feb  4 09:17:43 2002
+@@ -594,11 +594,11 @@
+ 
+ #: ../pnpconf.c:838
+ msgid ""
+-"There is already a file called /etc/isapnp.conf. The existing file will be "
+-"renamed /etc/isapnp.conf.bak and a new file will be written."
++"There is already a file called /etc/isapnp/isapnp.conf. The existing file will be "
++"renamed /etc/isapnp/isapnp.conf.bak and a new file will be written."
+ msgstr ""
+-"÷ÖÅ ¦ÓÎÕ¤ ÆÁÊÌ /etc/isapnp.conf. ¶ÓÎÕÀÞÉÊ ÆÁÊÌ ÂÕÄÅ ÐÅÒÅÊÍÅÎÏ×ÁÎÏ Õ "
+-"/etc/isapnp.conf.bak."
++"÷ÖÅ ¦ÓÎÕ¤ ÆÁÊÌ /etc/isapnp/isapnp.conf. ¶ÓÎÕÀÞÉÊ ÆÁÊÌ ÂÕÄÅ ÐÅÒÅÊÍÅÎÏ×ÁÎÏ Õ "
++"/etc/isapnp/isapnp.conf.bak."
+ 
+ #: ../pnpconf.c:939
+ msgid "No cards found, or error probing for pnp cards\n"
+diff -urN sndconfig.orig/sndconfig.c sndconfig/sndconfig.c
+--- sndconfig.orig/sndconfig.c	Mon Feb  4 09:13:51 2002
++++ sndconfig/sndconfig.c	Mon Feb  4 09:19:06 2002
+@@ -1144,7 +1144,7 @@
+ }
+  
+ static int TestSndCard(int dopnp, struct settings *set) {
+-    char *args[]={"/sbin/isapnp", "/etc/isapnp.conf", NULL, NULL, NULL};
++    char *args[]={"/sbin/isapnp", "/etc/isapnp/isapnp.conf", NULL, NULL, NULL};
+     char *modargs[]={"/sbin/modprobe", "sound", NULL, NULL, NULL};
+     char *playargs[]={"/usr/bin/play","/usr/share/sndconfig/sample.au",NULL,NULL,NULL};
+     char *midiargs[]={"/usr/bin/playmidi",NULL,"/usr/share/sndconfig/sample.midi",NULL,NULL,NULL};
+diff -urN sndconfig.orig/sndconfig.man sndconfig/sndconfig.man
+--- sndconfig.orig/sndconfig.man	Mon Jan 25 21:46:47 1999
++++ sndconfig/sndconfig.man	Mon Feb  4 09:19:16 2002
+@@ -41,7 +41,7 @@
+ 
+ /etc/sysconfig/soundcard	Stores current settings
+ /etc/conf.modules		Stores sound module configuration
+-/etc/isapnp.conf		Stores PnP configuration
++/etc/isapnp/isapnp.conf		Stores PnP configuration
+ 
+ .SH "SEE ALSO"
+ isapnp(1), pnpdump(1)
