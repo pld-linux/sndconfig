@@ -12,6 +12,8 @@ Source0:	%{name}-%{PACKAGE_VERSION}.tar.gz
 Requires:	isapnptools >= 1.16, sox, awesfx, playmidi
 Conflicts:	kernel < 2.2.0
 %endif
+BuildRequires:	newt-devel
+BuildRequires:	slang-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 ExclusiveArch:	%{ix86} sparc alpha
 
