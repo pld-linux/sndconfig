@@ -5,10 +5,6 @@ Version:	0.33
 Release:	4
 License:	GPL
 Group:		Applications/Sound
-Group(de):	Applikationen/Laut
-Group(es):	Aplicaciones/Sonido
-Group(pl):	Aplikacje/D¼wiêk
-Group(pt_BR):	Aplicações/Som
 Source0:	%{name}-%{PACKAGE_VERSION}.tar.gz
 Patch0:		%{name}-PLD_and_rename_conf.modules.patch.bz2
 Patch1:		%{name}-isapnp.patch
