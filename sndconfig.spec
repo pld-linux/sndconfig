@@ -2,13 +2,16 @@ Summary:	The Red Hat Linux sound configuration tool
 Summary(pl):	Narzêdzie do konfiguracji d¼wiêku
 Name:		sndconfig
 Version:	0.33
-Release:	3
+Release:	4
 License:	GPL
 Group:		Applications/Sound
 Group(de):	Applikationen/Laut
+Group(es):	Aplicaciones/Sonido
 Group(pl):	Aplikacje/D¼wiêk
+Group(pt_BR):	Aplicações/Som
 Source0:	%{name}-%{PACKAGE_VERSION}.tar.gz
-Patch0:		sndconfig-PLD_and_rename_conf.modules.patch.bz2
+Patch0:		%{name}-PLD_and_rename_conf.modules.patch.bz2
+Patch1:		%{name}-isapnp.patch
 %ifarch %{ix86} alpha
 Requires:	isapnptools >= 1.16, sox, awesfx, playmidi
 Conflicts:	kernel < 2.2.0
@@ -35,6 +38,7 @@ Red Hata (lub kompatybilnym).
 %prep
 %setup -q -n %{name}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__make} RPM_OPT_FLAGS="%{rpmcflags}"
@@ -44,7 +48,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man8,%{_datadir}/locale}
 
 %{__make} prefix=$RPM_BUILD_ROOT%{_prefix} install
-cp $RPM_BUILD_ROOT/usr/man/man8/* $RPM_BUILD_ROOT/usr/share/man/man8/
+cp $RPM_BUILD_ROOT%{_prefix}/man/man8/* $RPM_BUILD_ROOT%{_mandir}/man8/
 
 %find_lang %{name}
 
