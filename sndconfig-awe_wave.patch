@@ -1,0 +1,21 @@
+diff -urN sndconfig.orig/sndconfig.c sndconfig/sndconfig.c
+--- sndconfig.orig/sndconfig.c	Mon Feb  4 09:48:30 2002
++++ sndconfig/sndconfig.c	Mon Feb  4 09:49:20 2002
+@@ -1016,7 +1016,7 @@
+      * we want to lock ISA dma buffers. */
+     if (!stat("/proc/kcore",&memstat))
+      if ((set->bus == isa) && (memstat.st_size>16777216)) 
+-       fprintf(t,"pre-install sound insmod sound dmabuf=1\n");
++       fprintf(t,"#pre-install sound insmod sound dmabuf=1\n");
+ 
+     if (set->flags & HAS_OPL3) {
+ 	if (!(set->flags & HAS_AWE)) 
+@@ -1040,7 +1040,7 @@
+ 	}
+     }
+     if (set->flags & HAS_AWE)
+-      fprintf(t,"alias midi awe_wave\npost-install awe_wave /bin/sfxload /etc/midi/GU11-ROM.SF2\n");
++      fprintf(t,"alias midi awe_wave\npost-install awe_wave /bin/sfxload /usr/share/midi/soundfont/gu11-rom.sf2\n");
+ 
+     if (set->flags & SB_AS_LIB)
+       fprintf(t, "options sb %s=1\n",set->modulename);
