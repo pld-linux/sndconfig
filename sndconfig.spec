@@ -12,8 +12,8 @@ Patch1:		%{name}-isapnp.patch
 Patch2:		%{name}-awe_wave.patch
 Patch3:		%{name}-gcc.patch
 BuildRequires:	newt-devel
+BuildRequires:	sharutils
 BuildRequires:	slang-devel
-buildRequires:	sharutils
 %ifarch %{ix86} alpha
 Requires:	awesfx
 Requires:	isapnptools >= 1.16
