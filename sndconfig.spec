@@ -10,12 +10,15 @@ Source0:	%{name}-%{version}.tar.gz
 Patch0:		%{name}-PLD_and_rename_conf.modules.patch.bz2
 Patch1:		%{name}-isapnp.patch
 Patch2:		%{name}-awe_wave.patch
-%ifarch %{ix86} alpha
-Requires:	isapnptools >= 1.16, sox, awesfx, playmidi
-Conflicts:	kernel < 2.2.0
-%endif
 BuildRequires:	newt-devel
 BuildRequires:	slang-devel
+%ifarch %{ix86} alpha
+Requires:	awesfx
+Requires:	isapnptools >= 1.16
+Requires:	playmidi
+Requires:	sox
+Conflicts:	kernel < 2.2.0
+%endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 ExclusiveArch:	%{ix86} sparc alpha
 
