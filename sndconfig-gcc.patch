@@ -1,0 +1,10 @@
+diff -urN sndconfig.orig/pci-probing/Makefile sndconfig/pci-probing/Makefile
+--- sndconfig.orig/pci-probing/Makefile	1998-10-08 21:49:24.000000000 +0200
++++ sndconfig/pci-probing/Makefile	2003-09-09 19:01:00.000000000 +0200
+@@ -1,5 +1,5 @@
+ DEBUGFLAGS = -g
+-CC = egcs
++CC = gcc
+ CFLAGS     = -Wall $(DEBUGFLAGS) $(INCLUDEPATH) -D_GNU_SOURCE=1 -O
+ LDFLAGS    = $(LIBPATH)
+ 
