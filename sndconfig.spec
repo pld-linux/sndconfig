@@ -46,13 +46,16 @@ Red Hata (lub kompatybilnym).
 %patch3 -p1
 
 %build
-%{__make} RPM_OPT_FLAGS="%{rpmcflags}"
+%{__make} \
+	RPM_OPT_FLAGS="%{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man8,%{_datadir}/locale}
 
-%{__make} prefix=$RPM_BUILD_ROOT%{_prefix} install
+%{__make} install \
+	prefix=$RPM_BUILD_ROOT%{_prefix}
+
 cp $RPM_BUILD_ROOT%{_prefix}/man/man8/* $RPM_BUILD_ROOT%{_mandir}/man8/
 
 %find_lang %{name}
