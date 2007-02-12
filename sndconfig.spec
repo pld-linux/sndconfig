@@ -1,5 +1,5 @@
 Summary:	The Red Hat Linux sound configuration tool
-Summary(pl):	Narzêdzie do konfiguracji d¼wiêku
+Summary(pl.UTF-8):   NarzÄ™dzie do konfiguracji dÅºwiÄ™ku
 Name:		sndconfig
 Version:	0.33
 Release:	4
@@ -33,9 +33,9 @@ The sound settings are saved by the aumix and sysV runlevel scripts.
 
 Install sndconfig if you need to configure your sound card.
 
-%description -l pl
-sysconfig jest tekstowym narzêdziem do ustawiania plików
-konfiguracyjnych potrzebnych do u¿ywania karty d¼wiêkowej z Linuksem
+%description -l pl.UTF-8
+sysconfig jest tekstowym narzÄ™dziem do ustawiania plikÃ³w
+konfiguracyjnych potrzebnych do uÅ¼ywania karty dÅºwiÄ™kowej z Linuksem
 Red Hata (lub kompatybilnym).
 
 %prep
