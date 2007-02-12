@@ -1,5 +1,5 @@
 Summary:	The Red Hat Linux sound configuration tool
-Summary(pl.UTF-8):   Narzędzie do konfiguracji dźwięku
+Summary(pl.UTF-8):	Narzędzie do konfiguracji dźwięku
 Name:		sndconfig
 Version:	0.33
 Release:	4
