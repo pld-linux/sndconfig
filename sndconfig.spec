@@ -7,7 +7,7 @@ License:	GPL
 Group:		Applications/Sound
 Source0:	%{name}-%{version}.tar.gz
 # Source0-md5:	99735d5aeb239619a47353b6a92b34ef
-Patch0:		%{name}-PLD_and_rename_conf.modules.patch.bz2
+Patch0:		%{name}-PLD_and_rename_conf.modules.patch
 Patch1:		%{name}-isapnp.patch
 Patch2:		%{name}-awe_wave.patch
 Patch3:		%{name}-gcc.patch

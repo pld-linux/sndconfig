@@ -1,0 +1,78 @@
+diff -urN sndconfig.orig/sndconfig.c sndconfig/sndconfig.c
+--- sndconfig.orig/sndconfig.c	Mon Apr 19 15:29:04 1999
++++ sndconfig/sndconfig.c	Sun Feb  3 20:20:09 2002
+@@ -299,7 +299,8 @@
+ /* get newt initialized, set help line, etc */
+ static void NewtStartUp( void ) {
+     char roottext[80];
+-
++    char roottext2[80];
++    
+     newtInit();
+     newtCls();
+     newtPushHelpLine(_("  <Tab>/<Alt-Tab> between elements  |"
+@@ -308,7 +309,12 @@
+     snprintf(roottext, 80,
+ 	     _("Sound Configuration Utility %s          "
+              "         (C) 1999 Red Hat Software"), VERSION);
++    snprintf(roottext2, 80,
++	     _("                                        "
++	     "           (C) 2002 PLD Linux port "), VERSION);
++    
+     newtDrawRootText(0, 0, roottext);
++    newtDrawRootText(0, 1, roottext2);
+ }
+ 
+ static char *CardTypeToString( enum cards type ) {
+@@ -454,12 +460,12 @@
+     set->descr[0]=0;
+     fclose(f);
+     
+-    /* If card is unspecified, don't even bother looking in /etc/conf.modules */
++    /* If card is unspecified, don't even bother looking in /etc/modules.conf */
+     if (set->type == UNSPEC)
+       return 0;
+ 
+-    /* now read io settings from /etc/conf.modules */
+-    if ((f=fopen("/etc/conf.modules","r"))==NULL)
++    /* now read io settings from /etc/modules.conf */
++    if ((f=fopen("/etc/modules.conf","r"))==NULL)
+ 	return -1;
+     
+     /* scan for line for modulenames */
+@@ -973,7 +979,7 @@
+ 	return -1;
+ 
+     snprintf(modulename,200," %s ",set->modulename);
+-    if ((f=fopen("/etc/conf.modules", "r"))!=NULL) {
++    if ((f=fopen("/etc/modules.conf", "r"))!=NULL) {
+ 	    while(1) {
+ 		    if (!fgets(tmpstr, sizeof(tmpstr), f))
+ 		      break;
+@@ -994,13 +1000,13 @@
+ 	    fclose(f);
+     }
+ 
+-    if (!madebackup && !access("/etc/conf.modules", F_OK)) {
++    if (!madebackup && !access("/etc/modules.conf", F_OK)) {
+ 	newtWinMessage(_("File Exists"), _("Ok"),
+-		       _("There is already a file called /etc/conf.modules."
++		       _("There is already a file called /etc/modules.conf."
+ 		       " The existing file will be renamed "
+-		       "/etc/conf.modules.bak and a new file will be "
++		       "/etc/modules.conf.bak and a new file will be "
+ 		       "written."));
+-	rename("/etc/conf.modules", "/etc/conf.modules.bak");
++	rename("/etc/modules.conf", "/etc/modules.conf.bak");
+ 	madebackup=1;
+     }
+     
+@@ -1133,7 +1139,7 @@
+ 
+     fclose(t);
+     chmod(tmpfile,0644);
+-    rename(tmpfile,"/etc/conf.modules");
++    rename(tmpfile,"/etc/modules.conf");
+     return 0;
+ }
+  
